@@ -27,6 +27,7 @@ namespace MySpectrum.Fragments
         {
             clickedUser = AppData.curUser.Users[position];
             userposition = position;
+            AppData.singleUserPosition = position;
         }
 
         public override void OnResume()
@@ -35,7 +36,9 @@ namespace MySpectrum.Fragments
 
             var main = (MainActivity)Activity;
             main.Title = clickedUser.FirstName + " " + clickedUser.LastName;
-            main.fab.Hide();
+            main.fab.SetImageResource(Resource.Drawable.baseline_delete_white_36);
+            main.fab.Show();
+            main.InvalidateOptionsMenu();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -133,9 +133,12 @@
     <AndroidResource Include="Resources\layout\MainLayout.axml" />
     <AndroidResource Include="Resources\layout\UserListLayout.axml" />
     <AndroidResource Include="Resources\layout\UserCellLayout.axml" />
-    <AndroidResource Include="Resources\Menu\action_toolbar.xml" />
+    <AndroidResource Include="Resources\Menu\action_toolbar_add.xml" />
     <AndroidResource Include="Resources\drawable\baseline_add_white_36.png" />
     <AndroidResource Include="Resources\layout\CreateNewUserLayout.axml" />
+    <AndroidResource Include="Resources\drawable\baseline_delete_white_36.png" />
+    <AndroidResource Include="Resources\Menu\action_toolbar_delete.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

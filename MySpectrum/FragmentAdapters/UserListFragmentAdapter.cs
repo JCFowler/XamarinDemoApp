@@ -38,7 +38,7 @@ namespace MySpectrum.FragmentAdapters
             userHolder.mView.Click += (sender, e) => 
             {
                 var fragmentTransaction = owner.SupportFragmentManager.BeginTransaction();
-                fragmentTransaction.Replace(Resource.Id.fragmentContainer, new SingleUserFragment(position));
+                fragmentTransaction.Replace(Resource.Id.fragmentContainer, new SingleUserFragment(position), "SingleUser");
                 fragmentTransaction.AddToBackStack("mainList");
                 fragmentTransaction.Commit();
             };

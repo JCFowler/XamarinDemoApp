@@ -10,6 +10,8 @@ namespace MySpectrum.Classes
 
         public static LoginUser curUser;
 
+        public static int singleUserPosition;
+
         public static AppData GetInstance()
         {
             if (instance == null)

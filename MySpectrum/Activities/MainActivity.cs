@@ -44,16 +44,27 @@ namespace MySpectrum.Activities
             fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += (sender, e) =>
             {
-                var fragmentTransactionFab = SupportFragmentManager.BeginTransaction();
-                fragmentTransactionFab.Replace(Resource.Id.fragmentContainer, new CreateNewUserFragment());
-                fragmentTransactionFab.AddToBackStack(null);
-                fragmentTransactionFab.Commit();
+                //SupportFragment myFragment = SupportFragmentManager.FindFragmentByTag("SingleUser");
+                if (AppData.singleUserPosition != -1) // Is -1 if on ListUserFragment
+                {
+                    DeleteUser();
+                }
+                else
+                {
+                    var fragmentTransactionFab = SupportFragmentManager.BeginTransaction();
+                    fragmentTransactionFab.Replace(Resource.Id.fragmentContainer, new CreateNewUserFragment());
+                    fragmentTransactionFab.AddToBackStack(null);
+                    fragmentTransactionFab.Commit();
+                }
             };
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.action_toolbar, menu);
+            if (AppData.singleUserPosition != -1) // Is -1 if on ListUserFragment
+                MenuInflater.Inflate(Resource.Menu.action_toolbar_delete, menu);
+            else
+                MenuInflater.Inflate(Resource.Menu.action_toolbar_add, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -72,8 +83,22 @@ namespace MySpectrum.Activities
                     tx.AddToBackStack(null);
                     tx.Commit();
                     break;
+                case Resource.Id.action_delete:
+                    DeleteUser();
+                    break;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void DeleteUser()
+        {
+            int position = AppData.singleUserPosition;
+            string name = AppData.curUser.Users[position].FirstName + " " + AppData.curUser.Users[position].LastName;
+
+            AppData.curUser.Users.RemoveAt(position);
+            SupportFragmentManager.PopBackStack();
+            SaveController.SetUser(AppData.curUser);
+            Toast.MakeText(this, name + " was deleted.", ToastLength.Short).Show();
         }
     }
 }

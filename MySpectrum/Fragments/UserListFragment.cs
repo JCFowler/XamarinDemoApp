@@ -31,9 +31,11 @@ namespace MySpectrum.Fragments
 
             var main = (MainActivity)this.Activity;
             main.Title = "Hello, " + AppData.curUser.Username;
+            main.fab.SetImageResource(Resource.Drawable.baseline_add_white_36);
             main.fab.Show();
-
             mAdapter.NotifyDataSetChanged();
+            AppData.singleUserPosition = -1;
+            main.InvalidateOptionsMenu();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
