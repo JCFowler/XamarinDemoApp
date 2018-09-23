@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:myapp="http://schemas.android.com/apk/res-auto">
+    
+    <item android:id="@+id/action_add"
+            android:title="Add User"
+            myapp:showAsAction="never"/>
+    <item android:id="@+id/action_logout"
+            android:title="Logout"
+            myapp:showAsAction="never"/>
+</menu>

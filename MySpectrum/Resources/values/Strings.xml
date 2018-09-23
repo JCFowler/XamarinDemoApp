@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MySpectrum</string>
+    <string name="create_user">Create New User</string>
+    <string name="remember_me">Remember me?</string>
+    <string name="existing_users">Start with existing users?</string>
+</resources>
